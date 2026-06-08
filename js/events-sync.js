@@ -17,6 +17,8 @@
   var SHEET_GID = "535150315";   // the Google Form "Form Responses" tab
   var SHEET_URL = "https://docs.google.com/spreadsheets/d/" + SHEET_ID +
     "/gviz/tq?tqx=out:csv&gid=" + SHEET_GID;
+  // The permanent highlights from data/events.js — shown alongside Form events.
+  var BUILTIN = (window.EVENTS || []).slice();
 
   // RFC-4180-ish CSV parser (handles quotes, commas and newlines inside quotes).
   function parseCSV(text) {
@@ -111,11 +113,17 @@
     fetch(SHEET_URL, { cache: "no-store" })
       .then(function (res) { return res.ok ? res.text() : Promise.reject(); })
       .then(function (text) {
-        var events = build(parseCSV(text));
-        if (events && events.length) {                    // only override if the sheet has real rows
-          window.EVENTS = events;
-          if (window.Render && window.Render.events) window.Render.events();
-        }
+        var sheet = build(parseCSV(text)) || [];
+        if (!sheet.length) return;                         // no submissions yet -> keep the highlights
+        // Show the highlights first, then the Form events; de-dupe by English title.
+        var seen = {}, merged = [];
+        BUILTIN.concat(sheet).forEach(function (e) {
+          var k = (e.title && e.title.en ? e.title.en : "").toLowerCase().trim();
+          if (k && seen[k]) return;
+          seen[k] = 1; merged.push(e);
+        });
+        window.EVENTS = merged;
+        if (window.Render && window.Render.events) window.Render.events();
       })
       .catch(function () { /* keep the built-in events */ });
   }

@@ -19,28 +19,6 @@ window.EVENTS = [
     }
   },
   {
-    id: "wharf-sunset-concerts",
-    date: "2026-07-04",
-    place: "fishermans-wharf",
-    tag: "music",
-    title: { en: "Fisherman's Wharf Sunset Concerts", zh: "漁人碼頭夕陽音樂會" },
-    desc: {
-      en: "Free open-air live music on the boardwalk every summer weekend as the sun goes down over the harbour.",
-      zh: "整個夏季的週末，當夕陽沒入港灣，木棧道上都有免費的露天現場音樂。"
-    }
-  },
-  {
-    id: "bali-bike-kite",
-    date: "2026-08-15",
-    place: "bali-left-bank",
-    tag: "outdoor",
-    title: { en: "Bali Left Bank Bike & Kite Day", zh: "八里左岸單車風箏日" },
-    desc: {
-      en: "Family kite-flying and riverside cycling on the breezy Bali lawns — easy to reach now via the new bridge.",
-      zh: "在八里清風徐徐的草坪上放風箏、騎單車的親子活動——如今經由新大橋輕鬆抵達。"
-    }
-  },
-  {
     id: "art-festival",
     date: "2026-10-24",
     place: "old-street",
