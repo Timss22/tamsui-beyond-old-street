@@ -20,12 +20,15 @@
 
   // ---- Small UI pieces ----------------------------------------------------
   function media(p) {
-    // A photo if one was dropped in, otherwise a category gradient + emoji.
-    if (p.image) {
-      return '<div class="card-media" style="background-image:url(' + esc(p.image) + ')"></div>';
-    }
-    return '<div class="card-media ph ph-' + esc(p.category) + '"><span>' +
-      (CATEGORY_EMOJI[p.category] || "📍") + "</span></div>";
+    // Convention over config: a card automatically uses assets/img/<id>.jpg if
+    // it exists (or an explicit p.image). The gradient + emoji sits underneath
+    // as the fallback, and onerror drops the <img> when no photo is present —
+    // so teammates only need to drop a correctly-named file in, no code edits.
+    var src = p.image || ("assets/img/" + p.id + ".jpg");
+    return '<div class="card-media ph ph-' + esc(p.category) + '">' +
+      "<span>" + (CATEGORY_EMOJI[p.category] || "📍") + "</span>" +
+      '<img class="card-photo" src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()">' +
+      "</div>";
   }
 
   function crowdMeter(score) {
