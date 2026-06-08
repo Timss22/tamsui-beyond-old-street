@@ -19,6 +19,11 @@
   }
 
   // ---- Small UI pieces ----------------------------------------------------
+  // Google Maps "directions to here" deep link (opens the Maps app on mobile).
+  function dirUrl(p) {
+    return "https://www.google.com/maps/dir/?api=1&destination=" + p.lat + "," + p.lng;
+  }
+
   function media(p) {
     // Convention over config: a card automatically uses assets/img/<id>.jpg if
     // it exists (or an explicit p.image). The gradient + emoji sits underneath
@@ -79,7 +84,10 @@
           '<p class="whygo"><b>' + window.t("gems.whygo") + ":</b> " + esc(window.tr(p.whyGo)) + "</p>" +
           (p.hours ? '<p class="hours">🕘 ' + esc(p.hours) + "</p>" : "") +
           sparkline(p) +
-          '<button class="link-btn" data-focus="' + p.id + '">' + window.t("gems.viewmap") + " →</button>" +
+          '<div class="card-actions">' +
+            '<button class="link-btn" data-focus="' + p.id + '">' + window.t("gems.viewmap") + " →</button>" +
+            '<a class="link-btn dir" onclick="event.stopPropagation()" href="' + dirUrl(p) + '" target="_blank" rel="noopener">🧭 ' + window.t("place.directions") + "</a>" +
+          "</div>" +
         "</div></article>";
     }).join("");
     wireFocus(box);
@@ -165,7 +173,10 @@
             esc(window.tr(p.name)) + "</h3>" + areaBadge(p) + "</div>" +
           '<div class="rec-pred"><span>' + window.t("rec.predicted") + "</span>" + crowdMeter(row.crowd) + "</div>" +
           '<p class="whygo">' + esc(window.tr(p.whyGo)) + "</p>" +
-          '<button class="link-btn" data-focus="' + p.id + '">' + window.t("rec.takeme") + "</button>" +
+          '<div class="card-actions">' +
+            '<button class="link-btn" data-focus="' + p.id + '">' + window.t("rec.takeme") + "</button>" +
+            '<a class="link-btn dir" onclick="event.stopPropagation()" href="' + dirUrl(p) + '" target="_blank" rel="noopener">🧭 ' + window.t("place.directions") + "</a>" +
+          "</div>" +
         "</div></article>";
     }).join("");
     wireFocus(box);
@@ -190,6 +201,6 @@
 
   window.Render = {
     all: all, gems: gems, routes: routes, food: food, events: events,
-    recommend: recommend, categoryEmoji: CATEGORY_EMOJI, esc: esc
+    recommend: recommend, categoryEmoji: CATEGORY_EMOJI, esc: esc, dirUrl: dirUrl
   };
 })();

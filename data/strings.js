@@ -96,6 +96,7 @@ window.STRINGS = {
     "gems.whygo": "Why go",
     "gems.besttime": "Calmest times this week",
     "gems.viewmap": "On the map",
+    "place.directions": "Directions",
 
     "crowd.label": "Usual crowd",
     "crowd.high": "Busy",
@@ -240,6 +241,7 @@ window.STRINGS = {
     "gems.whygo": "推薦理由",
     "gems.besttime": "本週最清幽的時段",
     "gems.viewmap": "看地圖",
+    "place.directions": "路線",
 
     "crowd.label": "平時人潮",
     "crowd.high": "擁擠",

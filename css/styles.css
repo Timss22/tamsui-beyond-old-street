@@ -54,6 +54,10 @@ img { max-width: 100%; }
 .btn-soft.active { background: linear-gradient(120deg, var(--sun1), var(--sun2)); color: #fff; border-color: transparent; }
 .link-btn { background: none; border: 0; color: var(--coral); font: inherit; font-weight: 700; cursor: pointer; padding: 6px 0; }
 .link-btn:hover { text-decoration: underline; }
+.card-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+.link-btn.dir { color: var(--teal); }
+.pop-dir { display: inline-block; margin-top: 10px; background: linear-gradient(120deg, var(--sun1), var(--sun2)); color: #fff; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: .85rem; }
+.pop-dir:hover { filter: brightness(1.05); text-decoration: none; }
 
 /* ---- Header / nav ------------------------------------------------------ */
 .nav {

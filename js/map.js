@@ -75,7 +75,9 @@
           window.t("crowd." + bucket) + " (" + Math.round(score) + "/100)</div>" +
         '<p>' + window.Render.esc(window.tr(p.blurb)) + "</p>" +
         (p.hours ? '<p class="pop-hours">🕘 ' + window.Render.esc(p.hours) + "</p>" : "") +
-        '<div class="pop-note">' + window.t("ml.estimate") + "</div></div>";
+        '<div class="pop-note">' + window.t("ml.estimate") + "</div>" +
+        '<a class="pop-dir" href="' + window.Render.dirUrl(p) + '" target="_blank" rel="noopener">🧭 ' + window.t("place.directions") + "</a>" +
+        "</div>";
     },
 
     matchesFilter: function (p) {
