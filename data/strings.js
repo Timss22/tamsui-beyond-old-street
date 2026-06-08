@@ -7,6 +7,7 @@
 window.STRINGS = {
   en: {
     "brand": "Tamsui · Beyond the Old Street",
+    "brand.short": "Tamsui",
     "nav.bridge": "New Bridge",
     "nav.recommend": "Where to go",
     "nav.map": "Map",
@@ -150,6 +151,7 @@ window.STRINGS = {
 
   zh: {
     "brand": "淡水 · 老街之外",
+    "brand.short": "淡水",
     "nav.bridge": "新大橋",
     "nav.recommend": "去哪好",
     "nav.map": "地圖",

@@ -31,7 +31,7 @@
   <!-- ===== Header ===== -->
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand"><span class="dot"></span><span data-i18n="brand">Tamsui · Beyond the Old Street</span></div>
+      <div class="brand"><span class="dot"></span><span data-i18n="brand.short">Tamsui</span></div>
       <button id="nav-toggle" aria-label="Menu">☰</button>
       <nav id="nav-menu">
         <a href="#bridge" data-i18n="nav.bridge">New Bridge</a>
@@ -92,7 +92,7 @@
         </div>
         <div class="bridge-visual">
           <div class="countdown"><span id="bridge-countdown"></span></div>
-          <div class="mast">🌉</div>
+          <img class="bridge-art" src="assets/icons/icon.svg" alt="The Tamkang Bridge at sunset" />
         </div>
       </div>
     </div>
@@ -107,7 +107,7 @@
       <div class="rec-wrap">
         <form class="rec-form" onsubmit="return false">
           <div class="rec-field">
-            <label data-i18n="rec.q_when">When?</label>
+            <span class="field-label" data-i18n="rec.q_when">When?</span>
             <div class="seg">
               <button type="button" data-when="now" class="active" data-i18n="rec.when_now">Right now</button>
               <button type="button" data-when="custom" data-i18n="rec.when_pick">Pick a time</button>
@@ -119,7 +119,7 @@
             </div>
           </div>
           <div class="rec-field">
-            <label data-i18n="rec.q_vibe">What's the mood?</label>
+            <span class="field-label" data-i18n="rec.q_vibe">What's the mood?</span>
             <div class="chips">
               <button type="button" data-vibe="any" class="active" data-i18n="rec.vibe_any">Surprise me</button>
               <button type="button" data-vibe="nature" data-i18n="rec.vibe_nature">Nature &amp; calm</button>
@@ -129,7 +129,7 @@
             </div>
           </div>
           <div class="rec-field">
-            <label data-i18n="rec.q_area">How far?</label>
+            <span class="field-label" data-i18n="rec.q_area">How far?</span>
             <label class="switch"><input type="checkbox" id="rec-bali" checked /><span class="track"></span><span data-i18n="rec.area_all">Include Bali</span></label>
           </div>
           <button type="button" id="rec-run" class="btn btn-primary" data-i18n="rec.button">Find my quiet spots</button>
