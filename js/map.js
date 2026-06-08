@@ -45,6 +45,8 @@
       });
       this.map.fitBounds(pts, { padding: [40, 40] });
       this.refresh();
+      // Recalculate size in case the container settled after first paint.
+      setTimeout(function () { self.map.invalidateSize(); }, 250);
 
       document.addEventListener("langchange", function () { self.refreshOpenPopup(); });
     },
@@ -67,11 +69,11 @@
       var emoji = window.Render.categoryEmoji[p.category] || "📍";
       var areaKey = p.area === "bali" ? "common.area_bali" : "common.area_tamsui";
       return '<div class="pop">' +
-        '<h4>' + emoji + " " + window.Render.esc(window.L(p.name)) + "</h4>" +
+        '<h4>' + emoji + " " + window.Render.esc(window.tr(p.name)) + "</h4>" +
         '<div class="pop-meta">' + window.t(areaKey) +
           ' · <span style="color:' + window.Predict.crowdColor(score) + '">●</span> ' +
           window.t("crowd." + bucket) + " (" + Math.round(score) + "/100)</div>" +
-        '<p>' + window.Render.esc(window.L(p.blurb)) + "</p>" +
+        '<p>' + window.Render.esc(window.tr(p.blurb)) + "</p>" +
         (p.hours ? '<p class="pop-hours">🕘 ' + window.Render.esc(p.hours) + "</p>" : "") +
         '<div class="pop-note">' + window.t("ml.estimate") + "</div></div>";
     },
@@ -119,7 +121,7 @@
         latlngs.push([p.lat, p.lng]);
         L.marker([p.lat, p.lng], {
           icon: L.divIcon({ className: "route-pin", html: "<span>" + (i + 1) + "</span>", iconSize: [26, 26] })
-        }).bindPopup(window.Render.esc(window.L(p.name))).addTo(group);
+        }).bindPopup(window.Render.esc(window.tr(p.name))).addTo(group);
       });
       L.polyline(latlngs, { color: "#e8553e", weight: 4, opacity: 0.85, dashArray: "2 8" }).addTo(group);
       group.addTo(this.map);

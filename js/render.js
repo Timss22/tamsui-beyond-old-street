@@ -70,10 +70,10 @@
       return '<article class="card gem" data-focus="' + p.id + '">' +
         media(p) +
         '<div class="card-body">' +
-          '<div class="card-head"><h3>' + esc(window.L(p.name)) + "</h3>" + areaBadge(p) + "</div>" +
+          '<div class="card-head"><h3>' + esc(window.tr(p.name)) + "</h3>" + areaBadge(p) + "</div>" +
           crowdMeter(row.crowd) +
-          '<p class="blurb">' + esc(window.L(p.blurb)) + "</p>" +
-          '<p class="whygo"><b>' + window.t("gems.whygo") + ":</b> " + esc(window.L(p.whyGo)) + "</p>" +
+          '<p class="blurb">' + esc(window.tr(p.blurb)) + "</p>" +
+          '<p class="whygo"><b>' + window.t("gems.whygo") + ":</b> " + esc(window.tr(p.whyGo)) + "</p>" +
           (p.hours ? '<p class="hours">🕘 ' + esc(p.hours) + "</p>" : "") +
           sparkline(p) +
           '<button class="link-btn" data-focus="' + p.id + '">' + window.t("gems.viewmap") + " →</button>" +
@@ -89,16 +89,16 @@
     box.innerHTML = window.ROUTES.map(function (r) {
       var stops = r.stops.map(function (id) {
         var p = place(id);
-        return "<li>" + (CATEGORY_EMOJI[p.category] || "📍") + " " + esc(window.L(p.name)) + "</li>";
+        return "<li>" + (CATEGORY_EMOJI[p.category] || "📍") + " " + esc(window.tr(p.name)) + "</li>";
       }).join("");
       return '<article class="card route">' +
         '<div class="card-body">' +
           '<div class="route-top"><span class="route-emoji">' + (CATEGORY_EMOJI[r.icon] || "🧭") + "</span>" +
             (r.promotesBridge ? '<span class="badge badge-bridge">🌉 ' + window.t("routes.bridge_badge") + "</span>" : "") +
           "</div>" +
-          "<h3>" + esc(window.L(r.title)) + "</h3>" +
-          '<p class="route-dur">⏱ ' + esc(window.L(r.duration)) + "</p>" +
-          '<p class="blurb">' + esc(window.L(r.desc)) + "</p>" +
+          "<h3>" + esc(window.tr(r.title)) + "</h3>" +
+          '<p class="route-dur">⏱ ' + esc(window.tr(r.duration)) + "</p>" +
+          '<p class="blurb">' + esc(window.tr(r.desc)) + "</p>" +
           '<div class="route-stops"><b>' + window.t("routes.stops_label") + "</b><ol>" + stops + "</ol></div>" +
           '<button class="btn btn-soft route-show" data-route="' + r.id + '">' + window.t("routes.show") + "</button>" +
         "</div></article>";
@@ -117,8 +117,8 @@
     box.innerHTML = window.FOODS.map(function (f) {
       return '<article class="card food">' +
         '<div class="food-emoji">' + f.icon + "</div>" +
-        '<div class="card-body"><h3>' + esc(window.L(f.name)) + "</h3>" +
-        '<p class="blurb">' + esc(window.L(f.desc)) + "</p></div></article>";
+        '<div class="card-body"><h3>' + esc(window.tr(f.name)) + "</h3>" +
+        '<p class="blurb">' + esc(window.tr(f.desc)) + "</p></div></article>";
     }).join("");
   }
 
@@ -140,8 +140,8 @@
         : formatDate(ev.date);
       return '<article class="event' + (ev.featured ? " featured" : "") + '">' +
         '<div class="event-date">' + (ev.season ? "🌸 " : "📅 ") + when + "</div>" +
-        '<div class="event-body"><h3>' + esc(window.L(ev.title)) + "</h3>" +
-        '<p>' + esc(window.L(ev.desc)) + "</p></div></article>";
+        '<div class="event-body"><h3>' + esc(window.tr(ev.title)) + "</h3>" +
+        '<p>' + esc(window.tr(ev.desc)) + "</p></div></article>";
     }).join("");
   }
 
@@ -159,9 +159,9 @@
         media(p) +
         '<div class="card-body">' +
           '<div class="card-head"><h3><span class="rank">' + (i + 1) + "</span> " +
-            esc(window.L(p.name)) + "</h3>" + areaBadge(p) + "</div>" +
+            esc(window.tr(p.name)) + "</h3>" + areaBadge(p) + "</div>" +
           '<div class="rec-pred"><span>' + window.t("rec.predicted") + "</span>" + crowdMeter(row.crowd) + "</div>" +
-          '<p class="whygo">' + esc(window.L(p.whyGo)) + "</p>" +
+          '<p class="whygo">' + esc(window.tr(p.whyGo)) + "</p>" +
           '<button class="link-btn" data-focus="' + p.id + '">' + window.t("rec.takeme") + "</button>" +
         "</div></article>";
     }).join("");

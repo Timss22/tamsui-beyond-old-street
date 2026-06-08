@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Leaflet map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet map (bundled locally — no third-party CDN, so it works everywhere) -->
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -257,7 +257,7 @@
   </footer>
 
   <!-- ===== Scripts ===== -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/vendor/leaflet/leaflet.js"></script>
   <!-- Data (sets window globals; works without a server) -->
   <script src="data/strings.js"></script>
   <script src="data/places.js"></script>

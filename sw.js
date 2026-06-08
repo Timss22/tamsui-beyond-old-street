@@ -5,10 +5,11 @@
  * (A previous "cache-first" version could keep serving stale CSS/JS — don't do
  * that during active development.) Bump VERSION to force-evict old caches.
  */
-const VERSION = "tamsui-v2";
+const VERSION = "tamsui-v3";
 const CORE = [
   "./", "index.html", "manifest.webmanifest",
   "css/styles.css",
+  "assets/vendor/leaflet/leaflet.css", "assets/vendor/leaflet/leaflet.js",
   "js/i18n.js", "js/predict.js", "js/render.js", "js/map.js", "js/app.js",
   "data/strings.js", "data/places.js", "data/routes.js",
   "data/events.js", "data/food.js", "data/crowd_model.js",

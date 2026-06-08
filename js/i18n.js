@@ -72,7 +72,8 @@
 
   I18N.init();
   window.I18N = I18N;
-  // Short global helpers used across render.js / map.js / app.js
+  // Short global helpers used across render.js / map.js / app.js.
+  // NOTE: the content localizer is `tr`, NOT `L` — `L` is Leaflet's global!
   window.t = function (k) { return I18N.t(k); };
-  window.L = function (o) { return I18N.L(o); };
+  window.tr = function (o) { return I18N.L(o); };
 })();
