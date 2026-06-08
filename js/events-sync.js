@@ -56,17 +56,33 @@
   function build(rows) {
     if (!rows || !rows.length) return null;
     var H = rows[0].map(function (h) { return (h || "").toLowerCase().trim(); });
+
+    // Works for plain headers ("Title (EN)") AND Google Form question columns
+    // ("Event name (English)", plus a "Timestamp" column we ignore).
+    // \ben\b matches "(en)" but NOT the "en" inside "ev-en-t".
+    function isEn(h) { return /english|\ben\b/.test(h); }
+    function isZh(h) { return /中文|chinese|\bzh\b|繁/.test(h); }
+    function titleish(h) { return /(title|name)/.test(h) && !/(place|spot|site|location|near|file|photo)/.test(h); }
+    function descish(h) { return /(desc|detail)/.test(h); }
+
+    var titleCols = [], descCols = [];
+    H.forEach(function (h, i) { if (titleish(h)) titleCols.push(i); if (descish(h)) descCols.push(i); });
+    function pick(cols, zh) {
+      for (var i = 0; i < cols.length; i++) if (zh ? isZh(H[cols[i]]) : isEn(H[cols[i]])) return cols[i];
+      return -1;
+    }
+
     var col = {
-      date:  findCol(H, function (h) { return h.indexOf("date") >= 0; }),
-      tEn:   findCol(H, function (h) { return h.indexOf("title") >= 0 && /(en|english)/.test(h); }),
-      tZh:   findCol(H, function (h) { return h.indexOf("title") >= 0 && /(zh|中文|chinese)/.test(h); }),
-      dEn:   findCol(H, function (h) { return h.indexOf("desc") >= 0 && /(en|english)/.test(h); }),
-      dZh:   findCol(H, function (h) { return h.indexOf("desc") >= 0 && /(zh|中文|chinese)/.test(h); }),
-      place: findCol(H, function (h) { return /(place|spot|site|location)/.test(h); }),
+      date:  findCol(H, function (h) { return h.indexOf("date") >= 0 && !/(stamp|update)/.test(h); }),
+      tEn:   pick(titleCols, false),
+      tZh:   pick(titleCols, true),
+      dEn:   pick(descCols, false),
+      dZh:   pick(descCols, true),
+      place: findCol(H, function (h) { return /(place|spot|site|location|near)/.test(h); }),
       tag:   findCol(H, function (h) { return /(tag|type|category)/.test(h); })
     };
-    if (col.tEn < 0) col.tEn = findCol(H, function (h) { return h.indexOf("title") >= 0; });
-    if (col.dEn < 0) col.dEn = findCol(H, function (h) { return h.indexOf("desc") >= 0; });
+    if (col.tEn < 0 && titleCols.length) col.tEn = titleCols[0];
+    if (col.dEn < 0 && descCols.length) col.dEn = descCols[0];
     if (col.date < 0) return null;
 
     var out = [];
