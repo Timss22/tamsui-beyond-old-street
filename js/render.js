@@ -135,7 +135,8 @@
 
   // ---- What's On ----------------------------------------------------------
   function formatDate(iso) {
-    var d = new Date(iso + "T00:00:00");
+    var d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso + "T00:00:00" : iso);
+    if (isNaN(d.getTime())) return iso;            // unparseable -> show the raw text as typed
     if (window.I18N.lang === "zh") {
       return d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
     }

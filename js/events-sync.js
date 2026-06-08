@@ -14,7 +14,9 @@
   "use strict";
 
   var SHEET_ID = "1e_ctPtuihjMKyNtpvLcLB5XPRhR0FKc6gBu8X7hD3Cc";
-  var SHEET_URL = "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/gviz/tq?tqx=out:csv";
+  var SHEET_GID = "535150315";   // the Google Form "Form Responses" tab
+  var SHEET_URL = "https://docs.google.com/spreadsheets/d/" + SHEET_ID +
+    "/gviz/tq?tqx=out:csv&gid=" + SHEET_GID;
 
   // RFC-4180-ish CSV parser (handles quotes, commas and newlines inside quotes).
   function parseCSV(text) {
@@ -89,8 +91,9 @@
     for (var r = 1; r < rows.length; r++) {
       var row = rows[r];
       var cell = function (k) { return col[k] >= 0 && row[col[k]] != null ? String(row[col[k]]).trim() : ""; };
-      var date = normDate(cell("date")), tEn = cell("tEn");
-      if (!date || !tEn) continue;                        // need a date + an English title
+      var rawDate = cell("date"), tEn = cell("tEn");
+      if (!rawDate || !tEn) continue;                     // need a date + an English title
+      var date = normDate(rawDate) || rawDate;            // keep raw text if it won't parse
       var tZh = cell("tZh") || tEn, dEn = cell("dEn"), dZh = cell("dZh") || dEn;
       out.push({
         id: "sheet-" + r, date: date,
