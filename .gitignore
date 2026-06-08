@@ -1,0 +1,11 @@
+# Python (ML training only — not needed to run the site)
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tamsui · Beyond the Old Street</title>
+  <meta name="description" content="A smart guide that predicts the crowds and points you to Tamsui's hidden gems — and across the new Tamkang Bridge." />
+  <meta name="theme-color" content="#7b3fb0" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Tamsui · Beyond the Old Street" />
+  <meta property="og:description" content="Skip the crowds. A crowd-predicting guide to Tamsui's hidden gems and the new Tamkang Bridge." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span><span data-i18n="brand">Tamsui · Beyond the Old Street</span></div>
+      <button id="nav-toggle" aria-label="Menu">☰</button>
+      <nav id="nav-menu">
+        <a href="#bridge" data-i18n="nav.bridge">New Bridge</a>
+        <a href="#recommend" data-i18n="nav.recommend">Where to go</a>
+        <a href="#map-section" data-i18n="nav.map">Map</a>
+        <a href="#gems" data-i18n="nav.gems">Hidden Gems</a>
+        <a href="#routes" data-i18n="nav.routes">Routes</a>
+        <a href="#food" data-i18n="nav.food">Eat Local</a>
+        <a href="#events" data-i18n="nav.events">What's On</a>
+      </nav>
+      <div class="lang">
+        <button id="lang-btn" data-i18n-aria="settings.open">🌐 <span id="lang-current">EN</span> ▾</button>
+        <div id="lang-menu">
+          <button data-lang="en" data-i18n="lang.en">English</button>
+          <button data-lang="zh" data-i18n="lang.zh">繁體中文</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-sun"></div>
+    <div class="container hero-inner">
+      <span class="hero-kicker" data-i18n="hero.kicker">A smarter way to see Tamsui</span>
+      <h1 data-i18n="hero.title">Tamsui has more than one street.</h1>
+      <p class="hero-sub" data-i18n="hero.sub"></p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#map-section" data-i18n="hero.cta_map">Explore the map</a>
+        <a class="btn btn-ghost" href="#bridge" data-i18n="hero.cta_bridge">See the new bridge</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num" id="stat-places">–</div><div class="lbl" data-i18n="hero.stat_places">places to discover</div></div>
+        <div class="stat"><div class="num" id="stat-gems">–</div><div class="lbl" data-i18n="hero.stat_gems">quiet hidden gems</div></div>
+        <div class="stat"><div class="num" id="stat-routes">–</div><div class="lbl" data-i18n="hero.stat_routes">themed routes</div></div>
+      </div>
+    </div>
+    <div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path fill="#fff8f2" d="M0,42 C240,72 480,8 720,30 C960,52 1200,76 1440,34 L1440,70 L0,70 Z"></path></svg></div>
+  </section>
+
+  <!-- ===== New Tamkang Bridge ===== -->
+  <section id="bridge" class="section">
+    <div class="container">
+      <p class="kicker" data-i18n="bridge.kicker">Now open · 12 May 2026</p>
+      <div class="bridge-grid">
+        <div>
+          <h2 data-i18n="bridge.title">The New Tamkang Bridge</h2>
+          <p class="sub" data-i18n="bridge.lead"></p>
+          <ul class="bridge-facts">
+            <li class="fact"><span class="fact-label" data-i18n="bridge.fact1_label"></span><span class="fact-value" data-i18n="bridge.fact1_value"></span></li>
+            <li class="fact"><span class="fact-label" data-i18n="bridge.fact2_label"></span><span class="fact-value" data-i18n="bridge.fact2_value"></span></li>
+            <li class="fact"><span class="fact-label" data-i18n="bridge.fact3_label"></span><span class="fact-value" data-i18n="bridge.fact3_value"></span></li>
+            <li class="fact"><span class="fact-label" data-i18n="bridge.fact4_label"></span><span class="fact-value" data-i18n="bridge.fact4_value"></span></li>
+          </ul>
+          <p class="bridge-body" data-i18n="bridge.body"></p>
+          <a class="btn btn-soft" href="#map-section" data-i18n="bridge.cta">Find it on the map</a>
+        </div>
+        <div class="bridge-visual">
+          <div class="countdown"><span id="bridge-countdown"></span></div>
+          <div class="mast">🌉</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Recommender ===== -->
+  <section id="recommend" class="section alt">
+    <div class="container">
+      <p class="kicker" data-i18n="rec.kicker">Smart recommender</p>
+      <h2 data-i18n="rec.title">Where should I go right now?</h2>
+      <p class="sub" data-i18n="rec.sub"></p>
+      <div class="rec-wrap">
+        <form class="rec-form" onsubmit="return false">
+          <div class="rec-field">
+            <label data-i18n="rec.q_when">When?</label>
+            <div class="seg">
+              <button type="button" data-when="now" class="active" data-i18n="rec.when_now">Right now</button>
+              <button type="button" data-when="custom" data-i18n="rec.when_pick">Pick a time</button>
+            </div>
+            <div id="rec-custom-fields" class="rec-custom-fields hidden">
+              <select id="rec-day" aria-label="Day"></select>
+              <input type="range" id="rec-hour" min="6" max="21" value="14" aria-label="Hour" />
+              <span id="rec-hour-val">14:00</span>
+            </div>
+          </div>
+          <div class="rec-field">
+            <label data-i18n="rec.q_vibe">What's the mood?</label>
+            <div class="chips">
+              <button type="button" data-vibe="any" class="active" data-i18n="rec.vibe_any">Surprise me</button>
+              <button type="button" data-vibe="nature" data-i18n="rec.vibe_nature">Nature &amp; calm</button>
+              <button type="button" data-vibe="history" data-i18n="rec.vibe_history">History &amp; culture</button>
+              <button type="button" data-vibe="food" data-i18n="rec.vibe_food">Food</button>
+              <button type="button" data-vibe="views" data-i18n="rec.vibe_views">Views &amp; sunset</button>
+            </div>
+          </div>
+          <div class="rec-field">
+            <label data-i18n="rec.q_area">How far?</label>
+            <label class="switch"><input type="checkbox" id="rec-bali" checked /><span class="track"></span><span data-i18n="rec.area_all">Include Bali</span></label>
+          </div>
+          <button type="button" id="rec-run" class="btn btn-primary" data-i18n="rec.button">Find my quiet spots</button>
+        </form>
+        <div>
+          <h3 style="margin-top:0" data-i18n="rec.results">Your calmest picks</h3>
+          <div id="rec-results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Map ===== -->
+  <section id="map-section" class="section">
+    <div class="container">
+      <p class="kicker" data-i18n="map.kicker">Crowd radar</p>
+      <h2 data-i18n="map.title">The map that reads the crowds</h2>
+      <p class="sub" data-i18n="map.sub"></p>
+      <div class="map-wrap">
+        <div class="map-controls">
+          <div class="ctl">
+            <span class="ctl-label" data-i18n="map.time_label">Predicted busyness at</span>
+            <div class="radar-row">
+              <div class="seg">
+                <button type="button" data-radar="now" class="active" data-i18n="radar.now">Now</button>
+                <button type="button" data-radar="weekday" data-i18n="radar.weekday">Weekday</button>
+                <button type="button" data-radar="weekend" data-i18n="radar.weekend">Weekend</button>
+              </div>
+              <input type="range" id="radar-hour" min="6" max="21" value="14" disabled aria-label="Hour" />
+              <span id="radar-label"></span>
+            </div>
+          </div>
+        </div>
+        <div class="map-controls">
+          <div class="ctl">
+            <span class="ctl-label" data-i18n="map.filter_label">Filter</span>
+            <div class="filters">
+              <button data-cat="all" class="active" data-i18n="cat.all">All</button>
+              <button data-cat="history" data-i18n="cat.history">History</button>
+              <button data-cat="nature" data-i18n="cat.nature">Nature</button>
+              <button data-cat="culture" data-i18n="cat.culture">Culture</button>
+              <button data-cat="views" data-i18n="cat.views">Views</button>
+              <button data-cat="food" data-i18n="cat.food">Food</button>
+              <button data-cat="temple" data-i18n="cat.temple">Temple</button>
+              <button data-cat="bridge" data-i18n="cat.bridge">Bridge</button>
+            </div>
+          </div>
+          <label class="switch"><input type="checkbox" id="skip-toggle" /><span class="track"></span><span data-i18n="map.skip_crowds">Skip the crowds</span></label>
+          <div class="legend">
+            <span><i style="background:#2da96e"></i><span data-i18n="map.legend_quiet">Peaceful</span></span>
+            <span><i style="background:#f0a946"></i><span data-i18n="map.legend_ok">Moderate</span></span>
+            <span><i style="background:#e8503e"></i><span data-i18n="map.legend_busy">Busy</span></span>
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Hidden Gems ===== -->
+  <section id="gems" class="section alt">
+    <div class="container">
+      <p class="kicker" data-i18n="gems.kicker">Skip the crowds</p>
+      <h2 data-i18n="gems.title">Hidden gems, minutes away</h2>
+      <p class="sub" data-i18n="gems.sub"></p>
+      <div id="gems-grid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== Themed Routes ===== -->
+  <section id="routes" class="section">
+    <div class="container">
+      <p class="kicker" data-i18n="routes.kicker">Themed routes</p>
+      <h2 data-i18n="routes.title">Follow a trail, not the herd</h2>
+      <p class="sub" data-i18n="routes.sub"></p>
+      <div id="routes-grid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== Eat Local ===== -->
+  <section id="food" class="section alt">
+    <div class="container">
+      <p class="kicker" data-i18n="food.kicker">Eat local</p>
+      <h2 data-i18n="food.title">Tamsui on a plate</h2>
+      <p class="sub" data-i18n="food.sub"></p>
+      <div id="food-grid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== What's On ===== -->
+  <section id="events" class="section">
+    <div class="container">
+      <p class="kicker" data-i18n="events.kicker">What's on</p>
+      <h2 data-i18n="events.title">Time your visit</h2>
+      <p class="sub" data-i18n="events.sub"></p>
+      <div id="events-list"></div>
+      <p class="events-note" data-i18n="events.note"></p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4 data-i18n="footer.about_title">About this guide</h4>
+          <p class="disclaimer" data-i18n="footer.about"></p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.ig_title">Follow us</h4>
+          <!-- TODO: replace href with your team's real Instagram handle -->
+          <a class="footer-ig" href="https://www.instagram.com/" target="_blank" rel="noopener">📸 <span data-i18n="footer.ig">Our team's Instagram</span></a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.sources_title">Sources &amp; credits</h4>
+          <p class="disclaimer" data-i18n="footer.sources"></p>
+          <p class="disclaimer" data-i18n="footer.disclaimer"></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.made">Made with 🌅 for Tamsui</span>
+        <span data-i18n="ml.estimate">Estimate · not live data</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Data (sets window globals; works without a server) -->
+  <script src="data/strings.js"></script>
+  <script src="data/places.js"></script>
+  <script src="data/routes.js"></script>
+  <script src="data/events.js"></script>
+  <script src="data/food.js"></script>
+  <script src="data/crowd_model.js"></script>
+  <!-- App -->
+  <script src="js/i18n.js"></script>
+  <script src="js/predict.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
