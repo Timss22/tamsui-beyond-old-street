@@ -104,7 +104,7 @@ window.FOODS = [
   {
     id: "hooked-burger",
     icon: "🍔",
-    name: { en: "Hooked Burger", zh: "Hooked Burger" },        // add 中文 name
+    name: { en: "Hooked Burger", zh: "Hooked Burger" },
     desc: { en: "", zh: "" },
     dir: "Hooked Burger 淡水",
     image: null
@@ -112,15 +112,15 @@ window.FOODS = [
   {
     id: "bar-salix",
     icon: "🍸",
-    name: { en: "Bar Salix", zh: "Bar Salix" },                // add 中文 name
+    name: { en: "Bar Salix", zh: "煽樓" },
     desc: { en: "", zh: "" },
-    dir: "Bar Salix 淡水",
+    dir: "煽樓 淡水",
     image: null
   },
   {
     id: "la-villa-danshui",
     icon: "🍽️",
-    name: { en: "La Villa Danshui", zh: "La Villa Danshui" },  // add 中文 name
+    name: { en: "La Villa Danshui", zh: "La Villa Danshui" },
     desc: { en: "", zh: "" },
     dir: "La Villa Danshui 淡水",
     image: null
@@ -139,14 +139,6 @@ window.FOODS = [
     name: { en: "Jiuwang Ice Room", zh: "九旺冰室" },           // verify EN name
     desc: { en: "", zh: "" },
     dir: "九旺冰室 淡水",
-    image: null
-  },
-  {
-    id: "shanlou",
-    icon: "🍢",
-    name: { en: "Shanlou", zh: "煽樓" },                        // verify EN name
-    desc: { en: "", zh: "" },
-    dir: "煽樓 淡水",
     image: null
   }
 ];
