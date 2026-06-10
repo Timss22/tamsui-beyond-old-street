@@ -73,7 +73,10 @@ window.FOODS = [
     id: "asahi-huuhu",
     icon: "🥤",
     name: { en: "Asahi Huuhu", zh: "朝日夫婦" },
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A beloved riverside drinks stand famed for golden-hour views — grab a zingy calamansi soda or sea-salt coffee and watch the sunset.",
+      zh: "深受喜愛的河畔飲品攤，以黃昏美景聞名——點杯沁涼的金桔氣泡飲或海鹽咖啡，靜看夕陽西下。"
+    },
     dir: "朝日夫婦 淡水",
     image: null
   },
@@ -81,7 +84,10 @@ window.FOODS = [
     id: "dark-palace",
     icon: "🍛",
     name: { en: "Dark Palace Taiwanese Gourmet", zh: "黑殿飯店（右岸店）" },
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A hearty Taiwanese diner known for its crispy pork-chop rice and late-night comfort classics — now on the Bali side.",
+      zh: "份量十足的台式飯館，以酥香排骨飯與深夜療癒小吃聞名——如今在八里右岸也吃得到。"
+    },
     dir: "黑殿飯店 八里",
     image: null
   },
@@ -89,7 +95,10 @@ window.FOODS = [
     id: "twentytwo-sandwiches",
     icon: "🥪",
     name: { en: "Twentytwo Sandwiches", zh: "歐式三明治" },   // verify pairing
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "Generous European-style sandwiches stacked with fresh fillings — a perfect grab-and-go brunch before the riverside.",
+      zh: "用料豐富的歐式三明治，夾滿新鮮餡料——是漫步河岸前最對味的外帶早午餐。"
+    },
     dir: "Twentytwo Sandwiches 淡水",
     image: null
   },
@@ -97,7 +106,10 @@ window.FOODS = [
     id: "kooks",
     icon: "🍴",
     name: { en: "Kooks", zh: "異嗑堂（淡水店）" },             // verify pairing
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A cosy Tamsui bistro popular with students for its big, creative plates of Taiwanese-Western comfort food.",
+      zh: "溫馨的淡水小餐館，以份量大、創意十足的台式西餐療癒料理深受學生喜愛。"
+    },
     dir: "異嗑堂 淡水",
     image: null
   },
@@ -105,7 +117,10 @@ window.FOODS = [
     id: "hooked-burger",
     icon: "🍔",
     name: { en: "Hooked Burger", zh: "Hooked Burger" },
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "Juicy handmade burgers with thick patties and loaded toppings — a satisfying break from the street snacks.",
+      zh: "多汁的手作漢堡，厚實肉排搭配滿滿配料——是逛累小吃後最過癮的選擇。"
+    },
     dir: "Hooked Burger 淡水",
     image: null
   },
@@ -113,7 +128,10 @@ window.FOODS = [
     id: "bar-salix",
     icon: "🍸",
     name: { en: "Bar Salix", zh: "煽樓" },
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A laid-back bar and grill for an evening drink and small bites once the day-trippers have headed home.",
+      zh: "悠閒的小酒館與燒烤，待一日遊人潮散去後，最適合來杯小酒配點心。"
+    },
     dir: "煽樓 淡水",
     image: null
   },
@@ -121,7 +139,10 @@ window.FOODS = [
     id: "la-villa-danshui",
     icon: "🍽️",
     name: { en: "La Villa Danshui", zh: "La Villa Danshui" },
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A relaxed Western restaurant for pasta, pizza and a glass of wine — a calmer sit-down option away from the crowds.",
+      zh: "輕鬆的西式餐廳，供應義大利麵、披薩與紅酒——遠離人潮、可坐下慢食的好去處。"
+    },
     dir: "La Villa Danshui 淡水",
     image: null
   },
@@ -129,7 +150,10 @@ window.FOODS = [
     id: "tonsho-ramen",
     icon: "🍜",
     name: { en: "Tonsho Japanese Ramen", zh: "豚將日式拉麵（淡水店）" },  // verify EN name
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "Rich, slow-simmered tonkotsu ramen with springy noodles and melt-in-the-mouth pork — proper Japanese comfort in a bowl.",
+      zh: "熬煮多時的濃郁豚骨拉麵，搭配彈牙麵條與入口即化的叉燒——一碗道地的日式療癒。"
+    },
     dir: "豚將拉麵 淡水",
     image: null
   },
@@ -137,7 +161,10 @@ window.FOODS = [
     id: "jiuwang-ice",
     icon: "🧋",
     name: { en: "Jiuwang Ice Room", zh: "九旺冰室" },           // verify EN name
-    desc: { en: "", zh: "" },
+    desc: {
+      en: "A Hong-Kong-style ice room for silky milk tea, pineapple buns and shaved-ice desserts to beat the Tamsui heat.",
+      zh: "港式冰室，供應絲滑奶茶、菠蘿油與綿綿剉冰——消解淡水暑氣的最佳去處。"
+    },
     dir: "九旺冰室 淡水",
     image: null
   }
