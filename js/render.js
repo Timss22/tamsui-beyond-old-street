@@ -126,8 +126,11 @@
     var box = byId("food-grid");
     if (!box) return;
     box.innerHTML = window.FOODS.map(function (f) {
+      // Photo auto-loads from assets/img/<id>.jpg (or f.image); emoji is the fallback.
+      var src = f.image || ("assets/img/" + f.id + ".jpg");
       return '<article class="card food">' +
-        '<div class="food-emoji">' + f.icon + "</div>" +
+        '<div class="food-emoji"><span>' + f.icon + "</span>" +
+          '<img class="card-photo" src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()"></div>' +
         '<div class="card-body"><h3>' + esc(window.tr(f.name)) + "</h3>" +
         '<p class="blurb">' + esc(window.tr(f.desc)) + "</p></div></article>";
     }).join("");
