@@ -64,5 +64,89 @@ window.FOODS = [
     },
     dir: "The Shack 野菇屋 八里",
     image: null
+  },
+
+  /* ---- More from the team's restaurant list. SKELETONS: fill in desc {en, zh},
+   *      drop a photo at assets/img/<id>.jpg, and double-check the EN/中文 name
+   *      pairing (a few are my best guess — marked "verify"). ---- */
+  {
+    id: "asahi-huuhu",
+    icon: "🥤",
+    name: { en: "Asahi Huuhu", zh: "朝日夫婦" },
+    desc: { en: "", zh: "" },
+    dir: "朝日夫婦 淡水",
+    image: null
+  },
+  {
+    id: "dark-palace",
+    icon: "🍛",
+    name: { en: "Dark Palace Taiwanese Gourmet", zh: "黑殿飯店（右岸店）" },
+    desc: { en: "", zh: "" },
+    dir: "黑殿飯店 八里",
+    image: null
+  },
+  {
+    id: "twentytwo-sandwiches",
+    icon: "🥪",
+    name: { en: "Twentytwo Sandwiches", zh: "歐式三明治" },   // verify pairing
+    desc: { en: "", zh: "" },
+    dir: "Twentytwo Sandwiches 淡水",
+    image: null
+  },
+  {
+    id: "kooks",
+    icon: "🍴",
+    name: { en: "Kooks", zh: "異嗑堂（淡水店）" },             // verify pairing
+    desc: { en: "", zh: "" },
+    dir: "異嗑堂 淡水",
+    image: null
+  },
+  {
+    id: "hooked-burger",
+    icon: "🍔",
+    name: { en: "Hooked Burger", zh: "Hooked Burger" },        // add 中文 name
+    desc: { en: "", zh: "" },
+    dir: "Hooked Burger 淡水",
+    image: null
+  },
+  {
+    id: "bar-salix",
+    icon: "🍸",
+    name: { en: "Bar Salix", zh: "Bar Salix" },                // add 中文 name
+    desc: { en: "", zh: "" },
+    dir: "Bar Salix 淡水",
+    image: null
+  },
+  {
+    id: "la-villa-danshui",
+    icon: "🍽️",
+    name: { en: "La Villa Danshui", zh: "La Villa Danshui" },  // add 中文 name
+    desc: { en: "", zh: "" },
+    dir: "La Villa Danshui 淡水",
+    image: null
+  },
+  {
+    id: "tonsho-ramen",
+    icon: "🍜",
+    name: { en: "Tonsho Japanese Ramen", zh: "豚將日式拉麵（淡水店）" },  // verify EN name
+    desc: { en: "", zh: "" },
+    dir: "豚將拉麵 淡水",
+    image: null
+  },
+  {
+    id: "jiuwang-ice",
+    icon: "🧋",
+    name: { en: "Jiuwang Ice Room", zh: "九旺冰室" },           // verify EN name
+    desc: { en: "", zh: "" },
+    dir: "九旺冰室 淡水",
+    image: null
+  },
+  {
+    id: "shanlou",
+    icon: "🍢",
+    name: { en: "Shanlou", zh: "煽樓" },                        // verify EN name
+    desc: { en: "", zh: "" },
+    dir: "煽樓 淡水",
+    image: null
   }
 ];
