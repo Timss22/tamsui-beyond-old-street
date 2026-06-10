@@ -128,11 +128,20 @@
     box.innerHTML = window.FOODS.map(function (f) {
       // Photo auto-loads from assets/img/<id>.jpg (or f.image); emoji is the fallback.
       var src = f.image || ("assets/img/" + f.id + ".jpg");
+      var where = f.where ? '<p class="food-where">📍 ' + esc(window.tr(f.where)) + "</p>" : "";
+      var dir = f.dir
+        ? '<div class="card-actions"><a class="link-btn dir" target="_blank" rel="noopener" ' +
+          'href="https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(f.dir) + '">🧭 ' +
+          window.t("place.directions") + "</a></div>"
+        : "";
       return '<article class="card food">' +
         '<div class="food-emoji"><span>' + f.icon + "</span>" +
           '<img class="card-photo" src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()"></div>' +
         '<div class="card-body"><h3>' + esc(window.tr(f.name)) + "</h3>" +
-        '<p class="blurb">' + esc(window.tr(f.desc)) + "</p></div></article>";
+        where +
+        '<p class="blurb">' + esc(window.tr(f.desc)) + "</p>" +
+        dir +
+        "</div></article>";
     }).join("");
   }
 

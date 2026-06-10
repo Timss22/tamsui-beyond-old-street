@@ -231,6 +231,7 @@ select { font: inherit; padding: 8px 10px; border-radius: 10px; border: 1.5px so
 /* ---- Food -------------------------------------------------------------- */
 .food { flex-direction: row; align-items: stretch; }
 .food-emoji { font-size: 3rem; display: grid; place-items: center; min-width: 112px; background: linear-gradient(135deg, var(--bg-2), #ffe6d0); position: relative; overflow: hidden; }
+.food-where { margin: 0; font-weight: 700; color: var(--teal); font-size: .9rem; }
 
 /* ---- Events ------------------------------------------------------------ */
 #events-list { display: grid; gap: 14px; }
