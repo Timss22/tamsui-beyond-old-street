@@ -145,7 +145,7 @@
           window.t("place.directions") + "</a></div>"
         : "";
       return '<article class="card food">' +
-        '<div class="food-emoji"><span>' + f.icon + "</span>" + photoTag(f.id, f.image) + "</div>" +
+        '<div class="card-media ph ph-food"><span>' + f.icon + "</span>" + photoTag(f.id, f.image) + "</div>" +
         '<div class="card-body"><h3>' + esc(window.tr(f.name)) + "</h3>" +
         where +
         '<p class="blurb">' + esc(window.tr(f.desc)) + "</p>" +
