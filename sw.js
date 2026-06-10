@@ -5,7 +5,7 @@
  * (A previous "cache-first" version could keep serving stale CSS/JS — don't do
  * that during active development.) Bump VERSION to force-evict old caches.
  */
-const VERSION = "tamsui-v5";
+const VERSION = "tamsui-v6";
 const CORE = [
   "./", "index.html", "manifest.webmanifest",
   "css/styles.css",

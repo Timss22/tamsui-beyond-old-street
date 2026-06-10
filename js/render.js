@@ -24,16 +24,28 @@
     return "https://www.google.com/maps/dir/?api=1&destination=" + p.lat + "," + p.lng;
   }
 
+  // A photo named after the id, trying common extensions in turn, else the
+  // gradient + emoji shows. Teammates' downloads are often .jpeg/.webp, so we
+  // don't force a single extension.
+  var IMG_EXTS = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG"];
+  function photoTag(id, explicit) {
+    if (explicit) {
+      return '<img class="card-photo" src="' + esc(explicit) + '" alt="" loading="lazy" onerror="this.remove()">';
+    }
+    var base = "assets/img/" + id;
+    return '<img class="card-photo" src="' + esc(base) + IMG_EXTS[0] + '" data-base="' + esc(base) +
+      '" data-i="0" alt="" loading="lazy" onerror="window.imgFallback(this)">';
+  }
+  window.imgFallback = function (img) {
+    var i = (parseInt(img.getAttribute("data-i"), 10) || 0) + 1;
+    if (i < IMG_EXTS.length) { img.setAttribute("data-i", i); img.src = img.getAttribute("data-base") + IMG_EXTS[i]; }
+    else { img.parentNode && img.remove(); }
+  };
+
   function media(p) {
-    // Convention over config: a card automatically uses assets/img/<id>.jpg if
-    // it exists (or an explicit p.image). The gradient + emoji sits underneath
-    // as the fallback, and onerror drops the <img> when no photo is present —
-    // so teammates only need to drop a correctly-named file in, no code edits.
-    var src = p.image || ("assets/img/" + p.id + ".jpg");
     return '<div class="card-media ph ph-' + esc(p.category) + '">' +
       "<span>" + (CATEGORY_EMOJI[p.category] || "📍") + "</span>" +
-      '<img class="card-photo" src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()">' +
-      "</div>";
+      photoTag(p.id, p.image) + "</div>";
   }
 
   function crowdMeter(score) {
@@ -126,8 +138,6 @@
     var box = byId("food-grid");
     if (!box) return;
     box.innerHTML = window.FOODS.map(function (f) {
-      // Photo auto-loads from assets/img/<id>.jpg (or f.image); emoji is the fallback.
-      var src = f.image || ("assets/img/" + f.id + ".jpg");
       var where = f.where ? '<p class="food-where">📍 ' + esc(window.tr(f.where)) + "</p>" : "";
       var dir = f.dir
         ? '<div class="card-actions"><a class="link-btn dir" target="_blank" rel="noopener" ' +
@@ -135,8 +145,7 @@
           window.t("place.directions") + "</a></div>"
         : "";
       return '<article class="card food">' +
-        '<div class="food-emoji"><span>' + f.icon + "</span>" +
-          '<img class="card-photo" src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()"></div>' +
+        '<div class="food-emoji"><span>' + f.icon + "</span>" + photoTag(f.id, f.image) + "</div>" +
         '<div class="card-body"><h3>' + esc(window.tr(f.name)) + "</h3>" +
         where +
         '<p class="blurb">' + esc(window.tr(f.desc)) + "</p>" +
